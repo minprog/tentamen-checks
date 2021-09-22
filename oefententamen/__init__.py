@@ -8,10 +8,18 @@ def trein():
     check50.c.compile("trein.c", "-lcs50")
 
     # check example 1
-    check50.run("./trein").stdin("100").stdin("50").stdout("11.75").stdout("59")
+    (check50.run("./trein")
+        .stdin("100")
+        .stdin("50")
+        .stdout("11\.75(?!\d)", str_output="11.75")
+        .stdout("59(?!\d)", str_output="59"))
 
     # check example 2
-    check50.run("./trein").stdin("20").stdin("75").stdout("5.63").stdout("141")
+    (check50.run("./trein")
+        .stdin("20")
+        .stdin("75")
+        .stdout("5\.63(?!\d)", str_output="5.63")
+        .stdout("141(?!\d)", str_output="141"))
 
 @check50.check()
 def babysitten():
@@ -20,10 +28,16 @@ def babysitten():
     check50.c.compile("babysitten.c")
 
     # check example 1
-    check50.run("./babysitten").stdin("1930").stdin("0047").stdout("40")
+    (check50.run("./babysitten")
+        .stdin("1930")
+        .stdin("0047")
+        .stdout("40(?!\d)", str_output="40"))
 
     # check example 2
-    check50.run("./babysitten").stdin("2045").stdin("0200").stdout("44")
+    (check50.run("./babysitten")
+        .stdin("2045")
+        .stdin("0200")
+        .stdout("44(?!\d)", str_output="44"))
 
 @check50.check()
 def tram():
