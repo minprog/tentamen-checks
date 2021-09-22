@@ -17,6 +17,13 @@ def trein():
 def babysitten():
     """babysitten.c is correct"""
     check50.exists("babysitten.c")
+    check50.c.compile("babysitten.c")
+
+    # check example 1
+    check50.run("./babysitten").stdin("1930").stdin("0047").stdout("40")
+
+    # check example 2
+    check50.run("./babysitten").stdin("2045").stdin("0200").stdout("44")
 
 @check50.check()
 def tram():
