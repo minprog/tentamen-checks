@@ -43,6 +43,27 @@ def babysitten():
 def tram():
     """tram.c is correct"""
     check50.exists("tram.c")
+    check50.c.compile("tram.c", "-lcs50")
+
+    check = check50.run("./tram").stdin("25").stdout("10")
+
+    try:
+        check.stdout("\d")
+    except check50.Failure:
+        pass
+    else:
+        raise check50.Failure("It looks like you are printing more than one number, please print just the percentage")
+
+    check = check50.run("./tram").stdin("60").stdout("4")
+
+    try:
+        check.stdout("\d")
+    except check50.Failure:
+        pass
+    else:
+        raise check50.Failure("It looks like you are printing more than one number, please print just the percentage")
+
+
 
 @check50.check()
 def driehoek():
