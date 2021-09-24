@@ -40,6 +40,17 @@ def babysitten():
         .stdin("0200")
         .stdout("44(?!\d)", str_output="44"))
 
+    # check example 3
+    (check50.run("./babysitten")
+        .stdin("2040")
+        .stdin("2320")
+        .stdout("24(?!\d)", str_output="24"))
+
+    # check example 4
+    (check50.run("./babysitten")
+        .stdin("0033")
+        .stdin("0133")
+        .stdout("20(?!\d)", str_output="20"))
 
 @check50.check()
 def tram():
