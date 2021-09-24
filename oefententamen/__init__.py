@@ -25,7 +25,7 @@ def trein():
 def babysitten():
     """babysitten.c is correct"""
     check50.exists("babysitten.c")
-    check50.c.compile("babysitten.c")
+    check50.c.compile("babysitten.c", "-lcs50")
 
     # check example 1
     (check50.run("./babysitten")
