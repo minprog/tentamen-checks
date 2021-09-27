@@ -92,17 +92,42 @@ def rna():
     check50.c.compile("rna.c", "-lcs50")
 
     # check example 1
-    output = (check50.run("./rna")
+    (check50.run("./rna")
         .stdin("ATGC")
         .stdout("UACG(?!\w)", str_output="UACG"))
 
     # check example 2
-    output = (check50.run("./rna")
+    (check50.run("./rna")
         .stdin("AAF")
         .stdout("[O|o]ngeldige DNA keten", str_output="Ongeldige DNA keten"))
 
     # check example 3
-    output = (check50.run("./rna")
+    (check50.run("./rna")
         .stdin("AAGGTTCCAA")
         .stdout("UUCCAAGGUU(?!\w)", str_output="UUCCAAGGUU"))
+
+
+@check50.check()
+def spam():
+    """spam.c is correct"""
+    check50.exists("spam.c")
+    check50.c.compile("spam.c", "-lcs50")
+
+    # check example 1
+    output = (check50.run("./spam")
+        .stdin("Ca$hh M0n3y")
+        .stdout("30(?!\d)", str_output="30")
+        .stdout())
+
+    if "spam" not in output or "normaal" in output:
+        raise check50.Failure()
+
+    # check example 2
+    output = (check50.run("./spam")
+        .stdin("Dit was zeker geen spam!")
+        .stdout("5(?!\d)", str_output="5")
+        .stdout())
+
+    if "spam" in output or "normaal" not in output:
+        raise check50.Failure()
 
