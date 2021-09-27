@@ -131,3 +131,44 @@ def spam():
     if "spam" in output or "normaal" not in output:
         raise check50.Failure()
 
+
+@check50.check()
+def kruis():
+    """kruis.c is correct"""
+    check50.exists("kruis.c")
+    check50.c.compile("kruis.c", "-lcs50")
+
+    # check example 1
+    check = check50.run("./kruis").stdin("9")
+    answer = (
+        ".X. . . . . . . .X.\n"
+        ". .X. . . . . .X. .\n"
+        ". . .X. . . .X. . .\n"
+        ". . . .X. .X. . . .\n"
+        ". . . . .X. . . . .\n"
+        ". . . .X. .X. . . .\n"
+        ". . .X. . . .X. . .\n"
+        ". .X. . . . . .X. .\n"
+        ".X. . . . . . . .X.\n"
+    )
+    check.stdout(answer, regex=False)
+
+    # check example 2
+    check = check50.run("./kruis").stdin("5")
+    answer = (
+        ".X. . . .X.\n"
+        ". .X. .X. .\n"
+        ". . .X. . .\n"
+        ". .X. .X. .\n"
+        ".X. . . .X.\n"
+    )
+    check.stdout(answer, regex=False)
+
+    # check example 3
+    check = check50.run("./kruis").stdin("3")
+    answer = (
+        ".X. .X.\n"
+        ". .X. .\n"
+        ".X. .X.\n"
+    )
+    check.stdout(answer, regex=False)
