@@ -11,19 +11,19 @@ def vakantie():
     (check50.run("./vakantie")
         .stdin("v")
         .stdin("1")
-        .stdout("311(?!\d)", str_output="311"))
+        .stdout("319(?!\d)", str_output="319"))
 
     # check example 2
     (check50.run("./vakantie")
         .stdin("t")
         .stdin("10")
-        .stdout("718(?!\d)", str_output="718"))
+        .stdout("721(?!\d)", str_output="721"))
 
     # check example 3
     (check50.run("./vakantie")
         .stdin("a")
         .stdin("7")
-        .stdout("582(?!\d)", str_output="582"))
+        .stdout("587(?!\d)", str_output="587"))
 
 
 @check50.check()
