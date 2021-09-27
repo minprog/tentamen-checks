@@ -84,3 +84,25 @@ def caffeine():
     if "veilige" in output or "te veel" not in output:
         raise check50.Failure()
 
+
+@check50.check()
+def rna():
+    """rna.c is correct"""
+    check50.exists("rna.c")
+    check50.c.compile("rna.c", "-lcs50")
+
+    # check example 1
+    output = (check50.run("./rna")
+        .stdin("ATGC")
+        .stdout("UACG(?!\w)", str_output="UACG"))
+
+    # check example 2
+    output = (check50.run("./rna")
+        .stdin("AAF")
+        .stdout("[O|o]ngeldige DNA keten", str_output="Ongeldige DNA keten"))
+
+    # check example 3
+    output = (check50.run("./rna")
+        .stdin("AAGGTTCCAA")
+        .stdout("UUCCAAGGUU(?!\w)", str_output="UUCCAAGGUU"))
+
