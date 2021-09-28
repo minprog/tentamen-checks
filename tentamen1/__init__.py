@@ -99,7 +99,7 @@ def rna():
     # check example 2
     (check50.run("./rna")
         .stdin("AAF")
-        .stdout("[O|o]ngeldige DNA keten", str_output="Ongeldige DNA keten"))
+        .stdout("[O|o]ngeldige", str_output="Ongeldige"))
 
     # check example 3
     (check50.run("./rna")
