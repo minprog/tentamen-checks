@@ -22,6 +22,49 @@ def elektrisch_rijden():
         .stdout("rijden bespaart je 9.0 euro", regex=False))
 
 
+@check50.check()
+def postzegels():
+    """postzegels is correct"""
+    command = make_runnable("postzegels")
+
+    # check example 1
+    (check50.run(command)
+        .stdin("130")
+        .stdin("2")
+        .stdin("N")
+        .stdout("Plak 2 postzegel(s)", regex=False))
+
+    # check example 2
+    (check50.run(command)
+        .stdin("300")
+        .stdin("2")
+        .stdin("S")
+        .stdout("Plak 6 postzegel(s)", regex=False))
+
+    # check example 3
+    (check50.run(command)
+        .stdin("120")
+        .stdin("2")
+        .stdin("N")
+        .stdout("Plak 1 postzegel(s)", regex=False))
+
+    # check example 4
+    (check50.run(command)
+        .stdin("120")
+        .stdin("5")
+        .stdin("N")
+        .stdout("Dit kan niet met de post"))
+
+    # check example 5
+    (check50.run(command)
+        .stdin("120")
+        .stdin("3")
+        .stdin("A")
+        .stdin("B")
+        .stdin("D")
+        .stdout("Plak 2 postzegel(s)", regex=False))
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")
