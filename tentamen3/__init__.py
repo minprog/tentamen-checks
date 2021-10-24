@@ -141,6 +141,36 @@ def spraaksynthese():
         .stdout("Dat is geen getal"))
 
 
+@check50.check()
+def wachtwoorden():
+    """wachtwoorden is correct"""
+    command = make_runnable("wachtwoord")
+
+    # check example 1
+    (check50.run(command)
+        .stdin("aaa")
+        .stdout("Niet sterk genoeg")
+        .stdin("AAA")
+        .stdout("Niet sterk genoeg")
+        .stdin("aaaaAAAA")
+        .stdout("Niet sterk genoeg")
+        .stdin("aaaaaaaaa")
+        .stdout("Niet sterk genoeg")
+        .stdin("AAAAAAAAA")
+        .stdout("Niet sterk genoeg")
+        .stdin("000000000")
+        .stdout("Niet sterk genoeg")
+        .stdin("aaaaAAAAA0000")
+        .stdout("Sterk genoeg"))
+
+    # check example 2
+    (check50.run(command)
+        .stdin("abc0D")
+        .stdout("Niet sterk genoeg")
+        .stdin("abc0Defg")
+        .stdout("Sterk genoeg"))
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")

@@ -134,11 +134,6 @@ def spraaksynthese():
         .stdout("een\n")
         .stdout("nul"))
 
-    # check example 3
-    (check50.run(command)
-        .stdin("123a4")
-        .stdout("Dat is geen getal"))
-
 
 @check50.check()
 def email_validator():
