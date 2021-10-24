@@ -4,6 +4,7 @@ import os
 import sys
 import re
 
+
 @check50.check()
 def reistijd():
     """reistijd is correct"""
@@ -55,7 +56,6 @@ def elektrisch_rijden():
         "| 800   | 48.00      | 62.40    |\n",
         "| 900   | 54.00      | 70.20    |"
     ]
-
     for line, line_regex in zip(answer, to_regex(answer)):
         check.stdout(line_regex, str_output=line)
 
@@ -73,10 +73,54 @@ def elektrisch_rijden():
         "| 800   | 52.80      | 67.20    |\n",
         "| 900   | 59.40      | 75.60    |"
     ]
-
     for line, line_regex in zip(answer, to_regex(answer)):
         check.stdout(line_regex, str_output=line)
 
+
+@check50.check()
+def huis():
+    """huis is correct"""
+    command = make_runnable("huis")
+
+    # check example 1
+    check = check50.run(command).stdin("4")
+    answer = (
+        "   x(\s)*\n"
+        "  x x(\s)*\n"
+        " x   x(\s)*\n"
+        "x     x(\s)*\n"
+        "x     x(\s)*\n"
+        "x     x(\s)*\n"
+        "x     x(\s)*\n"
+        "xxxxxxx(\s)*\n"
+    )
+    check.stdout(answer)
+
+    # check example 2
+    check = check50.run(command).stdin("2")
+    answer = (
+        " x(\s)*\n"
+        "x x(\s)*\n"
+        "x x(\s)*\n"
+        "xxx(\s)*\n"
+    )
+    check.stdout(answer)
+
+    # check example 3
+    check = check50.run(command).stdin("5")
+    answer = (
+        "    x(\s)*\n"
+        "   x x(\s)*\n"
+        "  x   x(\s)*\n"
+        " x     x(\s)*\n"
+        "x       x(\s)*\n"
+        "x       x(\s)*\n"
+        "x       x(\s)*\n"
+        "x       x(\s)*\n"
+        "x       x(\s)*\n"
+        "xxxxxxxxx(\s)*\n"
+    )
+    check.stdout(answer)
 
 
 def make_runnable(name):
