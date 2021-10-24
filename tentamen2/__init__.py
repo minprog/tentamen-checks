@@ -114,6 +114,32 @@ def regen():
         .stdout("Gemiddeld 11 millimeter"))
 
 
+@check50.check()
+def spraaksynthese():
+    """spraaksynthese is correct"""
+    command = make_runnable("spraaksynthese")
+
+    # check example 1
+    (check50.run(command)
+        .stdin("123")
+        .stdout("een\n")
+        .stdout("twee\n")
+        .stdout("drie"))
+
+    # check example 2
+    (check50.run(command)
+        .stdin("4210")
+        .stdout("vier\n")
+        .stdout("twee\n")
+        .stdout("een\n")
+        .stdout("nul"))
+
+    # check example 3
+    (check50.run(command)
+        .stdin("123a4")
+        .stdout("Dat is geen getal"))
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")
