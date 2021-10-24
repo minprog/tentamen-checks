@@ -140,6 +140,37 @@ def spraaksynthese():
         .stdout("Dat is geen getal"))
 
 
+@check50.check()
+def email_validator():
+    """email-validator is correct"""
+    command = make_runnable("mail")
+
+    # check example 1
+    (check50.run(command)
+        .stdin("mdaks@gmail.com")
+        .stdout("Geldig"))
+
+    # check example 2
+    (check50.run(command)
+        .stdin("a@gmail.nl")
+        .stdout("Geldig"))
+
+    # check example 3
+    (check50.run(command)
+        .stdin("@")
+        .stdout("Ongeldig"))
+
+    # check example 4
+    (check50.run(command)
+        .stdin("me.@com")
+        .stdout("Ongeldig"))
+
+    # check example 5
+    (check50.run(command)
+        .stdin("m.raak@student.uva.nl")
+        .stdout("Geldig"))
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")
