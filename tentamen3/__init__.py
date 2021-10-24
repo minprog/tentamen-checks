@@ -65,6 +65,56 @@ def postzegels():
         .stdout("Plak 2 postzegel(s)", regex=False))
 
 
+@check50.check()
+def trapezium():
+    """trapezium is correct"""
+    command = make_runnable("trapezium")
+
+    # check example 1
+    check = check50.run(command).stdin("5")
+    answer = (
+"    ##########(\s)*\n"
+"   #        #(\s)*\n"
+"  #        #(\s)*\n"
+" #        #(\s)*\n"
+"##########(\s)*\n")
+    check.stdout(answer)
+
+    # check example 2
+    check = check50.run(command).stdin("15")
+    answer = (
+"              ##############################(\s)*\n"
+"             #                            #(\s)*\n"
+"            #                            #(\s)*\n"
+"           #                            #(\s)*\n"
+"          #                            #(\s)*\n"
+"         #                            #(\s)*\n"
+"        #                            #(\s)*\n"
+"       #                            #(\s)*\n"
+"      #                            #(\s)*\n"
+"     #                            #(\s)*\n"
+"    #                            #(\s)*\n"
+"   #                            #(\s)*\n"
+"  #                            #(\s)*\n"
+" #                            #(\s)*\n"
+"##############################(\s)*\n")
+    check.stdout(answer)
+
+    # check example 3
+    check = (check50.run(command)
+        .stdin("-3")
+        .stdin("40")
+        .stdin("3")
+        .stdin("5"))
+    answer = (
+"    ##########(\s)*\n"
+"   #        #(\s)*\n"
+"  #        #(\s)*\n"
+" #        #(\s)*\n"
+"##########(\s)*\n")
+    check.stdout(answer)
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")
