@@ -123,6 +123,36 @@ def huis():
     check.stdout(answer)
 
 
+@check50.check()
+def alfabet():
+    """alfabet is correct"""
+    command = make_runnable("alfabet")
+
+    # check example 1
+    (check50.run(command)
+        .stdin("Taylor")
+        .stdin("Lana")
+        .stdout("Lana first"))
+
+    # check example 2
+    (check50.run(command)
+        .stdin("shark")
+        .stdin("sWoRd")
+        .stdout("shark first"))
+
+    # check example 3
+    (check50.run(command)
+        .stdin("Daantje")
+        .stdin("Daan")
+        .stdout("Daan first"))
+
+    # check example 4
+    (check50.run(command)
+        .stdin("amanda")
+        .stdin("Amanda")
+        .stdout("No need to decide"))
+
+
 def make_runnable(name):
     if os.path.exists(f"{name}.c"):
         check50.c.compile(f"{name}.c", "-lcs50")
