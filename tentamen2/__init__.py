@@ -57,8 +57,8 @@ def rechthoeken():
 
 @check50.check()
 def hoofdletters():
-    """hoofdletters is correct"""
-    command = make_runnable("hoofdletters")
+    """teller is correct"""
+    command = make_runnable("teller")
 
     # check example 1
     (check50.run(command)
