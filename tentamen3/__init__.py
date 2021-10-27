@@ -121,7 +121,7 @@ def trapezium():
 @check50.check()
 def spraaksynthese():
     """spraaksynthese is correct"""
-    command = make_runnable("spraaksynthese")
+    command = make_runnable("spraaksynthese", "synthese")
 
     # check example 1
     (check50.run(command)
@@ -174,12 +174,13 @@ def wachtwoorden():
         .stdout("Sterk genoeg"))
 
 
-def make_runnable(name):
-    if os.path.exists(f"{name}.c"):
-        check50.c.compile(f"{name}.c", "-lcs50")
-        return f"./{name}"
+def make_runnable(*names):
+    for name in names:
+        if os.path.exists(f"{name}.c"):
+            check50.c.compile(f"{name}.c", "-lcs50")
+            return f"./{name}"
 
-    if os.path.exists(f"{name}.py"):
-        return f"{sys.executable} {name}.py"
+        if os.path.exists(f"{name}.py"):
+            return f"{sys.executable} {name}.py"
 
-    raise check50.Failure(f"{name} is niet aanwezig")
+    raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")
