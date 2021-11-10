@@ -6,7 +6,7 @@ import sys
 
 @check50.check()
 def rechthoeken():
-    """rechthoeken is correct"""
+    """rechthoeken is waarschijnlijk correct"""
     command = make_runnable("rechthoeken")
 
     # check example 1
