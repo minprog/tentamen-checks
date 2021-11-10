@@ -5,6 +5,7 @@ import contextlib
 import os
 import sys
 import re
+import glob
 
 @check50.check()
 def rechthoeken():
@@ -110,5 +111,10 @@ def make_runnable(*names):
 
         if os.path.exists(f"{name}.py"):
             return f"{sys.executable} {name}.py"
+
+        files = glob.glob("*.c")
+        if len(files) > 0:
+            check50.c.compile(f"{files[0]}", "-lcs50")
+            return f"./{files[0]}"
 
     raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")
