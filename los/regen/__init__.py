@@ -16,24 +16,24 @@ def regen():
             .stdin("12")
             .stdin("12")
             .stdin("999")
-            .stdout("Gemiddeld 12(?!\d)", str_output="Gemiddeld 12 millimeter"))
+            .stdout("[Gg]emiddeld 12(?!\d)", str_output="Gemiddeld 12 millimeter"))
 
         (run_regen()
             .stdin("12")
             .stdin("6")
             .stdin("3")
             .stdin("999")
-            .stdout("Gemiddeld 7(?!\d)", str_output="Gemiddeld 7 millimeter"))
+            .stdout("[gG]emiddeld 7(?!\d)", str_output="Gemiddeld 7 millimeter"))
 
         (run_regen()
             .stdin("999")
-            .stdout("Dat kan niet"))
+            .stdout("[Dd][ai]t kan niet"))
 
         (run_regen()
             .stdin("12")
             .stdin("11")
             .stdin("999")
-            .stdout("Gemiddeld 11(?!\d)", str_output="Gemiddeld 11 millimeter"))
+            .stdout("[Gg]emiddeld 11(?!\d)", str_output="Gemiddeld 11 millimeter"))
 
 
 class Stream:
