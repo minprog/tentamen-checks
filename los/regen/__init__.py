@@ -91,7 +91,7 @@ def make_runnable(*names):
 
         files = glob.glob("*.c")
         if len(files) > 0:
-            os.rename(files[0], f"{name}c")
+            os.rename(files[0], f"{name}.c")
             check50.c.compile(f"{name}.c", "-lcs50")
             return f"./{name}"
 
