@@ -91,7 +91,7 @@ def make_runnable(*names):
 
         files = glob.glob("*.c")
         if len(files) > 0:
-            check50.c.compile(f"{files[0]}", "-lcs50")
+            check50.c.compile(f"\"{files[0]}\"", "-lcs50")
             return f"./{files[0][0:-2]}"
 
     raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")
