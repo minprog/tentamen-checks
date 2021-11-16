@@ -27,7 +27,7 @@ def regen():
 
         (run_regen()
             .stdin("999")
-            .stdout("[Dd][ai]t kan niet"))
+            .stdout("[Dd][ai]t kan niet", str_output="Dat kan niet"))
 
         (run_regen()
             .stdin("12")
