@@ -58,7 +58,7 @@ def carometer():
         (run_check()
             .stdin("5")
             .stdin("500")
-            .stdin("J")
+            .stdin("j")
             .stdout("De kosten zijn EUR 600"))
 
         (run_check()
@@ -70,7 +70,7 @@ def carometer():
         (run_check()
             .stdin("2")
             .stdin("100")
-            .stdin("N")
+            .stdin("n")
             .stdout("De kosten zijn EUR 180"))
 
         (run_check()
