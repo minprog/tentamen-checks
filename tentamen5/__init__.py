@@ -40,9 +40,6 @@ def leetspeak():
         (run_check("tentamen baas!!")
             .stdout("73n74m3n b44s!!"))
 
-        (run_check("")
-            .exit(0))
-
 
 @check50.check()
 def carometer():
