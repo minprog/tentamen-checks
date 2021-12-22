@@ -21,17 +21,17 @@ def dobbelsteen():
         for i in inputs:
             run = run.stdin(str(i))
         run = run.stdin("0")
-        run.stdout("(Totalen:)?\s*" + "\n".join([f"{k}: {output.get(k,0)}" for k in [1,2,3,4,5,6]]))
+        run.stdout("(Totalen:)?[\s\n]*" + "\n".join([f"{k}: {output.get(k,0)}\s*" for k in [1,2,3,4,5,6]]), "Totalen:\n" + "\n".join([f"{k}: {output.get(k,0)}" for k in [1,2,3,4,5,6]]))
 
         # check length 0 input
         run = run_check()
         run = run.stdin("100")
-        run.stdout("Je hebt niet gegooid.")
+        run.stdout("Je hebt niet gegooid\.?", "Je hebt niet gegooid.")
 
         # check length 0 input
         run = run_check()
         run = run.stdin("0")
-        run.stdout("Je hebt niet gegooid.")
+        run.stdout("Je hebt niet gegooid\.?", "Je hebt niet gegooid.")
 
 
 
