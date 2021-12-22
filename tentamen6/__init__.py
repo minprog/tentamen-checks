@@ -19,18 +19,19 @@ def dobbelsteen():
 
         run = run_check()
         for i in inputs:
-            run = run.stdin(i)
-        run = run.stdin(0)
-        run.stdout("\n".join([f"{k}: {output[k]}" for k in dict(output)]))
+            run = run.stdin(str(i))
+        run = run.stdin("0")
+        run.stdout("Totalen:\n")
+        run.stdout("\n".join([f"{k}: {output.get(k,0)}" for k in [1,2,3,4,5,6]]))
 
         # check length 0 input
         run = run_check()
-        run = run.stdin(100)
+        run = run.stdin("100")
         run.stdout("Je hebt niet gegooid.")
 
         # check length 0 input
         run = run_check()
-        run = run.stdin(0)
+        run = run.stdin("0")
         run.stdout("Je hebt niet gegooid.")
 
 
