@@ -5,6 +5,7 @@ import contextlib
 import os
 import sys
 import re
+import glob
 
 from collections import Counter
 
@@ -38,7 +39,7 @@ def dobbelsteen():
 @check50.check()
 def absoluut():
     """absoluut werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("absoluut") as run_check:
+    with logged_check_factory("absoluut", "som") as run_check:
 
         (run_check("2 -5 -3 1")
             .stdout("11"))
@@ -67,7 +68,7 @@ def samenvatten():
 @check50.check()
 def splits():
     """splits werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("splits") as run_check:
+    with logged_check_factory("splits", "splitsen") as run_check:
 
         (run_check()
             .stdin("hvealkea nftiijen!e!")
@@ -84,7 +85,7 @@ def splits():
 @check50.check()
 def arrays():
     """arrays werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("arrays") as run_check:
+    with logged_check_factory("arrays", "array") as run_check:
 
         (run_check()
             .stdout("....\n.XX.\n.XX.\n....\n"))
@@ -145,5 +146,13 @@ def make_runnable(*names):
 
         if os.path.exists(f"{name}.py"):
             return f"{sys.executable} {name}.py"
+
+        files = {n.lower():n for n in glob.glob("*.c")}
+        real_name = f"{name}.c"
+        submitted_name = files.get(real_name, False)
+        if submitted_name != False:
+            os.rename(submitted_name, real_name)
+            check50.c.compile(real_name, "-lcs50")
+            return f"./{name}"
 
     raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")
