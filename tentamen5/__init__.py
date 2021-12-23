@@ -5,6 +5,7 @@ import contextlib
 import os
 import sys
 import re
+import glob
 
 @check50.check()
 def leestijd():
@@ -29,7 +30,7 @@ def leestijd():
 @check50.check()
 def leetspeak():
     """leetspeak werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("leetspeak") as run_check:
+    with logged_check_factory("leetspeak", "1337") as run_check:
 
         (run_check("Waterlelie")
             .stdout("W473r131i3"))
@@ -44,7 +45,7 @@ def leetspeak():
 @check50.check()
 def carometer():
     """carometer werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("carometer") as run_check:
+    with logged_check_factory("carometer", "rent") as run_check:
 
         (run_check()
             .stdin("5")
@@ -122,7 +123,7 @@ def afgebroken():
 @check50.check()
 def validate():
     """validate werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("validate") as run_check:
+    with logged_check_factory("validate", "lisp") as run_check:
 
         (run_check()
             .stdin("(defun factorial (())(] (loop))))")
@@ -198,6 +199,12 @@ def make_runnable(*names):
         submitted_name = files.get(real_name, False)
         if submitted_name != False:
             os.rename(submitted_name, real_name)
+            check50.c.compile(real_name, "-lcs50")
+            return f"./{name}"
+
+        files = glob.glob(f"{name}*.c")
+        if len(files) >= 1:
+            os.rename(files[0], real_name)
             check50.c.compile(real_name, "-lcs50")
             return f"./{name}"
 
