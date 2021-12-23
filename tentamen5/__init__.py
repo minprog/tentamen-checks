@@ -127,15 +127,15 @@ def validate():
 
         (run_check()
             .stdin("(defun factorial (())(] (loop))))")
-            .stdout("invalid"))
+            .stdout("[Ii]nvalid"))
 
         (run_check()
             .stdin("(write (factorial 3))")
-            .stdout("valid"))
+            .stdout("[Vv]alid"))
 
         (run_check()
             .stdin("(defun gretting ((write-line \"let it snow\"))")
-            .stdout("invalid"))
+            .stdout("[Ii]nvalid"))
 
 
 class Stream:
