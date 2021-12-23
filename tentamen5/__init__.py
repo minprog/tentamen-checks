@@ -43,6 +43,24 @@ def leetspeak():
 
 
 @check50.check()
+def leetspeak2():
+    """leetspeak werkt met input"""
+    with logged_check_factory("leetspeak", "1337") as run_check:
+
+        (run_check()
+            .stdin("Waterlelie")
+            .stdout("W473r131i3"))
+
+        (run_check()
+            .stdin("Anders")
+            .stdout("4nd3rs"))
+
+        (run_check()
+            .stdin("tentamen baas!!")
+            .stdout("73n74m3n b44s!!"))
+
+
+@check50.check()
 def carometer():
     """carometer werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("carometer", "rent") as run_check:
