@@ -33,13 +33,13 @@ def leetspeak():
     with logged_check_factory("leetspeak", "1337") as run_check:
 
         (run_check("Waterlelie")
-            .stdout("W473r131i3\s*"))
+            .stdout("W473r131i3"))
 
         (run_check("Anders")
-            .stdout("4nd3rs\s*"))
+            .stdout("4nd3rs"))
 
         (run_check("tentamen baas!!")
-            .stdout("73n74m3n\s*"))
+            .stdout("73n74m3n"))
 
 
 @check50.check()
