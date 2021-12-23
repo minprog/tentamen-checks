@@ -19,7 +19,7 @@ def leestijd():
             .stdin("10")
             .stdin("15")
             .stdin("-1")
-            .stdout("[Jj]e hebt ongeveer 9[12]\n? pagina", "Je hebt ongeveer 91/92 pagina's gelezen."))
+            .stdout("[Jj]e hebt ongeveer 9[12][\n]* pagina", "Je hebt ongeveer 91/92 pagina's gelezen."))
 
         # check example 2
         (run_check()
