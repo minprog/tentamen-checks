@@ -18,12 +18,12 @@ def leestijd():
             .stdin("10")
             .stdin("15")
             .stdin("-1")
-            .stdout("Je hebt ongeveer 9[12] pagina's gelezen.", "Je hebt ongeveer 91/92 pagina's gelezen."))
+            .stdout("Je hebt ongeveer 9[12] pagina's gelezen\.?", "Je hebt ongeveer 91/92 pagina's gelezen."))
 
         # check example 2
         (run_check()
             .stdin("-1")
-            .stdout("Je hebt niet gelezen."))
+            .stdout("Je hebt niet gelezen\.?"))
 
 
 @check50.check()
@@ -50,25 +50,25 @@ def carometer():
             .stdin("5")
             .stdin("500")
             .stdin("j")
-            .stdout("De kosten zijn EUR 600"))
+            .stdout("600", "De kosten zijn EUR 600"))
 
         (run_check()
             .stdin("5")
             .stdin("500")
             .stdin("j")
-            .stdout("De kosten zijn EUR 600"))
+            .stdout("600", "De kosten zijn EUR 600"))
 
         (run_check()
             .stdin("2")
             .stdin("100")
             .stdin("n")
-            .stdout("De kosten zijn EUR 180"))
+            .stdout("180", "De kosten zijn EUR 180"))
 
         (run_check()
             .stdin("2")
             .stdin("100")
             .stdin("n")
-            .stdout("De kosten zijn EUR 180"))
+            .stdout("180", "De kosten zijn EUR 180"))
 
         (run_check()
             .stdin("0")
@@ -78,7 +78,7 @@ def carometer():
             .stdin("2")
             .stdin("100")
             .stdin("n")
-            .stdout("De kosten zijn EUR 180"))
+            .stdout("180", "De kosten zijn EUR 180"))
 
         (run_check()
             .stdin("5")
@@ -88,7 +88,7 @@ def carometer():
             .stdin("2")
             .stdin("100")
             .stdin("n")
-            .stdout("De kosten zijn EUR 180"))
+            .stdout("180", "De kosten zijn EUR 180"))
 
         (run_check()
             .stdin("5")
@@ -98,7 +98,7 @@ def carometer():
             .stdin("2")
             .stdin("100")
             .stdin("n")
-            .stdout("De kosten zijn EUR 180"))
+            .stdout("180", "De kosten zijn EUR 180"))
 
 
 @check50.check()
@@ -126,15 +126,15 @@ def validate():
 
         (run_check()
             .stdin("(defun factorial (())(] (loop))))")
-            .stdout("invalid\n"))
+            .stdout("invalid"))
 
         (run_check()
             .stdin("(write (factorial 3))")
-            .stdout("valid\n"))
+            .stdout("valid"))
 
         (run_check()
             .stdin("(defun gretting ((write-line \"let it snow\"))")
-            .stdout("invalid\n"))
+            .stdout("invalid"))
 
 
 class Stream:
@@ -192,5 +192,13 @@ def make_runnable(*names):
 
         if os.path.exists(f"{name}.py"):
             return f"{sys.executable} {name}.py"
+
+        files = {n.lower():n for n in glob.glob("*.c")}
+        real_name = f"{name}.c"
+        submitted_name = files.get(real_name, False)
+        if submitted_name != False:
+            os.rename(submitted_name, real_name)
+            check50.c.compile(real_name, "-lcs50")
+            return f"./{name}"
 
     raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")
