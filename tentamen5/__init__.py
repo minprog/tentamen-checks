@@ -39,7 +39,7 @@ def leetspeak():
             .stdout("4nd3rs"))
 
         (run_check("tentamen baas!!")
-            .stdout("73n74m3n b44s!!"))
+            .stdout("73n74m3n"))
 
 
 @check50.check()
@@ -123,7 +123,7 @@ def afgebroken():
 @check50.check()
 def validate():
     """validate werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("validate", "lisp") as run_check:
+    with logged_check_factory("validate", "lisp", "validatie") as run_check:
 
         (run_check()
             .stdin("(defun factorial (())(] (loop))))")
