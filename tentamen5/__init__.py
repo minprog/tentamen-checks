@@ -33,13 +33,13 @@ def leetspeak():
     with logged_check_factory("leetspeak", "1337") as run_check:
 
         (run_check("Waterlelie")
-            .stdout("W473r131i3"))
+            .stdout("W473r131i3\s*"))
 
         (run_check("Anders")
-            .stdout("4nd3rs"))
+            .stdout("4nd3rs\s*"))
 
         (run_check("tentamen baas!!")
-            .stdout("73n74m3n"))
+            .stdout("73n74m3n\s*"))
 
 
 @check50.check()
@@ -75,7 +75,7 @@ def carometer():
             .stdin("0")
             .stdin("400")
             .stdin("n")
-            .stdout("Foute invoer!")
+            .stdout("invoer!")
             .stdin("2")
             .stdin("100")
             .stdin("n")
@@ -85,7 +85,7 @@ def carometer():
             .stdin("5")
             .stdin("19")
             .stdin("n")
-            .stdout("Foute invoer!")
+            .stdout("invoer!")
             .stdin("2")
             .stdin("100")
             .stdin("n")
@@ -95,7 +95,7 @@ def carometer():
             .stdin("5")
             .stdin("20")
             .stdin("z")
-            .stdout("Foute invoer!")
+            .stdout("invoer!")
             .stdin("2")
             .stdin("100")
             .stdin("n")
