@@ -17,17 +17,17 @@ def convert():
         (run_check()
             .stdin("0")
             .stdin("8")
-            .stdout("16\s?g bloem"))
+            .stdout("16\s?g(ram)? bloem"))
 
         (run_check()
             .stdin("1")
             .stdin("0")
-            .stdout("125\s?g bloem"))
+            .stdout("125\s?g(ram)? bloem"))
 
         (run_check()
             .stdin("1")
             .stdin("2")
-            .stdout("188\s?g bloem"))
+            .stdout("188\s?g(ram)? bloem"))
 
 
 
