@@ -67,7 +67,7 @@ def autocorrect():
 @check50.check()
 def wachtwoord():
     """wachtwoord werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("wachtwoord") as run_check:
+    with logged_check_factory("wachtwoord", "wachtwoorden") as run_check:
 
         (run_check()
             .stdin("geheim")
