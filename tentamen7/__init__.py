@@ -43,8 +43,7 @@ def filter():
             .stdin("artikel")
             .stdout("artikel\s*\n")
             .stdin("corvee")
-            .stdin("STOP")
-            .exit(0))
+            .stdin("STOP"))
 
         (run_check("b")
             .stdin("aards")
@@ -52,8 +51,7 @@ def filter():
             .stdout("bramen\s*\n")
             .stdin("artikel")
             .stdin("corvee")
-            .stdin("STOP")
-            .exit(0))
+            .stdin("STOP"))
 
 
 @check50.check()
