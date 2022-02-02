@@ -98,16 +98,16 @@ def maskers():
     with logged_check_factory("maskers") as run_check:
 
         (run_check("XC")
-            .stdout("Na maximaal 0.5 uur"))
+            .stdout("Na (max|min)imaal 0.5 uur"))
 
         (run_check("FF")
-            .stdout("Na maximaal 25.0 uur"))
+            .stdout("Na (max|min)imaal 25.0 uur"))
 
         (run_check("CX")
-            .stdout("Na maximaal 0.5 uur"))
+            .stdout("Na (max|min)imaal 0.5 uur"))
 
         (run_check("FX")
-            .stdout("Na maximaal 2.5 uur"))
+            .stdout("Na (max|min)imaal 2.5 uur"))
 
         (run_check()
             .stdout("([Uu]sage)?\s*(\./)?(masker)?"))
