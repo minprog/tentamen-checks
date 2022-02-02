@@ -110,7 +110,7 @@ def maskers():
             .stdout("Na maximaal 2.5 uur"))
 
         (run_check()
-            .stdout("Usage: ./maskers CODES"))
+            .stdout("[Uu]sage"))
 
 
 class Stream:
