@@ -98,16 +98,16 @@ def maskers():
     with logged_check_factory("maskers") as run_check:
 
         (run_check("XC")
-            .stdout("Na maximaal 0.5 uur is voldoende virus overgedragen voor een besmetting."))
+            .stdout("Na maximaal 0.5 uur"))
 
         (run_check("FF")
-            .stdout("Na maximaal 25.0 uur is voldoende virus overgedragen voor een besmetting."))
+            .stdout("Na maximaal 25.0 uur"))
 
         (run_check("CX")
-            .stdout("Na maximaal 0.5 uur is voldoende virus overgedragen voor een besmetting."))
+            .stdout("Na maximaal 0.5 uur"))
 
         (run_check("FX")
-            .stdout("Na maximaal 2.5 uur is voldoende virus overgedragen voor een besmetting."))
+            .stdout("Na maximaal 2.5 uur"))
 
         (run_check()
             .stdout("Usage: ./maskers CODES"))
