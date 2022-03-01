@@ -108,22 +108,22 @@ def alfa():
 
         (run_check()
             .stdin("ABDEUW")
-            .stdout("Deze tekst staat op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat op al?(f|ph)abetische volgorde."))
         (run_check()
             .stdin("ABEDUW")
-            .stdout("Deze tekst staat niet op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat niet op al?(f|ph)abetische volgorde."))
         (run_check()
             .stdin("ABD EUW")
-            .stdout("Deze tekst staat op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat op al?(f|ph)abetische volgorde."))
         (run_check()
             .stdin("ABE DUW")
-            .stdout("Deze tekst staat niet op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat niet op al?(f|ph)abetische volgorde."))
         (run_check()
             .stdin("AbD euw")
-            .stdout("Deze tekst staat op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat op al?(f|ph)abetische volgorde."))
         (run_check()
             .stdin("Abe Duw")
-            .stdout("Deze tekst staat niet op al(f|ph)abetische volgorde."))
+            .stdout("Deze tekst staat niet op al?(f|ph)abetische volgorde."))
 
 
 class Stream:
