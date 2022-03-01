@@ -83,7 +83,7 @@ def korting():
             .stdout(".*4.*6\.70\s*\n", "Besparing voor 4 avocado's is: 6.70")
             .stdout("\?", "Hoeveel avocado's?")
             .stdin("0")
-            .exit(0))
+            .exit())
 
         (run_check("2.35", "3")
             .stdout("[^:]+: 2.35\s*\n", "Elke avocado kost: 2.35")
@@ -99,7 +99,7 @@ def korting():
             .stdout(".*7.*4\.70\s*\n", "Besparing voor 7 avocado's is: 4.70")
             .stdout("\?", "Hoeveel avocado's?")
             .stdin("0")
-            .exit(0))
+            .exit())
 
 @check50.check()
 def alfa():
