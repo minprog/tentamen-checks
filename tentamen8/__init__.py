@@ -73,7 +73,7 @@ def morse():
 @check50.check()
 def korting():
     """korting werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("korting") as run_check:
+    with logged_check_factory("korting", "kortingsactie") as run_check:
 
         (run_check("3.35", "2")
             .stdout("[^:]+: 3.35\s*\n", "Elke avocado kost: 3.35")
@@ -104,7 +104,7 @@ def korting():
 @check50.check()
 def alfa():
     """alfa werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("alfa") as run_check:
+    with logged_check_factory("alfa", "Alfabetisch") as run_check:
 
         (run_check()
             .stdin("ABDEUW")
