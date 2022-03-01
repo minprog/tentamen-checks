@@ -41,21 +41,21 @@ def makelaar():
             .stdin("1")
             .stdin("1")
             .stdin("1")
-            .stdout("295000,-"))
+            .stdout("295000"))
 
         (run_check()
             .stdin("150")
             .stdin("3")
             .stdin("3")
             .stdin("1")
-            .stdout("826200,-"))
+            .stdout("826200"))
 
         (run_check()
             .stdin("150")
             .stdin("3")
             .stdin("3")
             .stdin("2")
-            .stdout("930000,-"))
+            .stdout("930000"))
 
 @check50.check()
 def morse():
