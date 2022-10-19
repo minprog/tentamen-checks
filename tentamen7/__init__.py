@@ -20,15 +20,21 @@ def convert():
             .stdout("16\s?g(ram)? bloem"))
 
         (run_check()
-            .stdin("1")
+            .stdin("2")
             .stdin("0")
-            .stdout("125\s?g(ram)? bloem"))
+            .stdout("250\s?g(ram)? bloem"))
 
         (run_check()
             .stdin("1")
             .stdin("2")
             .stdout("188\s?g(ram)? bloem"))
 
+        (run_check()
+            .stdin("0")
+            .stdin("0")
+            .stdin("1")
+            .stdin("2")
+            .stdout("188\s?g(ram)? bloem"))
 
 
 @check50.check()
