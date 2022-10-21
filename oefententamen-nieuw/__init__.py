@@ -30,7 +30,7 @@ def leestijd():
 def spam():
     """spam werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("spam") as run_check:
-        
+
         test_string = "CaZhh M0n3y"
         output = (run_check(test_string)
             .stdout("20(?!\d)", str_output="20")
@@ -46,6 +46,9 @@ def spam():
 
         if "spam" in output or "normaal" not in output:
             raise check50.Failure(f"{test_string} shoud not be spam")
+
+        (run_check()
+            .stdout("(Usage: )?./spam text..."))
 
 
 @check50.check()
