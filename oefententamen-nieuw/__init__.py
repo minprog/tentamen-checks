@@ -32,8 +32,7 @@ def spam():
     with logged_check_factory("spam") as run_check:
         
         test_string = "Ca$hh M0n3y"
-        output = (run_check()
-            .stdin(test_string)
+        output = (run_check(test_string)
             .stdout("30(?!\d)", str_output="30")
             .stdout())
 
@@ -41,8 +40,7 @@ def spam():
             raise check50.Failure(f"{test_string} should be spam")
 
         test_string = "Dit was zeker geen spam!"
-        output = (run_check()
-            .stdin(test_string)
+        output = (run_check(test_string)
             .stdout("5(?!\d)", str_output="5")
             .stdout())
 
