@@ -31,9 +31,9 @@ def spam():
     """spam werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("spam") as run_check:
         
-        test_string = "Ca$hh M0n3y"
+        test_string = "CaZhh M0n3y"
         output = (run_check(test_string)
-            .stdout("30(?!\d)", str_output="30")
+            .stdout("20(?!\d)", str_output="20")
             .stdout())
 
         if "spam" not in output or "normaal" in output:
