@@ -63,7 +63,7 @@ def streep():
     """streep werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("streep") as run_check:
 
-        run_check().stdout("[Uu]sage: ./streep[^\n]*", str_output="Usage: ./streep <height> <width>")
+        run_check().stdout("[Uu]sage:? ./streep[^\n]*", str_output="Usage: ./streep <height> <width>")
         
         (run_check("15", "5")
             .stdout("#\s*\n", str_output="#\n")
