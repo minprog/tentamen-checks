@@ -63,7 +63,7 @@ def streep():
     """streep werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("streep") as run_check:
 
-        run_check().stdout("[Uu]sage:? ./streep[^\n]*", str_output="Usage: ./streep <height> <width>")
+        run_check().stdout("([Uu]sage:?)? ./streep[^\n]*", str_output="Usage: ./streep <height> <width>")
         
         (run_check("15", "5")
             .stdout("#\s*\n", str_output="#\n")
@@ -105,15 +105,15 @@ def som():
 
         (run_check()
             .stdin("hello12world34")
-            .stdout("46", str_output="De som van de getallen is 46"))
+            .stdout("46", str_output="De som[^\d]*46"))
 
         (run_check()
             .stdin("2 vliegen in 1 klap")
-            .stdout("3", str_output="De som van de getallen is 3"))
+            .stdout("3", str_output="De som[^\d]*3"))
         
         (run_check()
             .stdin("nee")
-            .stdout("0", str_output="De som van de getallen is 0"))
+            .stdout("0", str_output="De som[^\d]*0"))
 
 
 class Stream:
