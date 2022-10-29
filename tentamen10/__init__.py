@@ -13,7 +13,7 @@ def morse():
 
         run_check("...---...").stdout("SOS")
         run_check("-..------.-.").stdout("DOOR")
-        run_check().stdout("([Uu]sage:? )?./morse[^\n]*", str_output="Usage: ./morse <code>")
+        run_check().stdout("([Uu]sage|morse)", str_output="Usage: ./morse <code>")
 
 
 @check50.check()
