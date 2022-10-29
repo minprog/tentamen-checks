@@ -95,7 +95,7 @@ def streep():
             .stdout(" #\s*\n", str_output=" #\n")
             .stdout("#\s*\n", str_output="#\n"))
 
-        run_check().stdout("([Uu]sage:?)? ?(\./streep)?[^\n]*", str_output="Usage: ./streep <height> <width>")
+        run_check().stdout("([Uu]sage|streep)", str_output="Usage: ./streep <height> <width>")
 
 @check50.check()
 def som():
