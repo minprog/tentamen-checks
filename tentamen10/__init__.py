@@ -11,7 +11,7 @@ def morse():
     """morse werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("morse") as run_check:
 
-        run_check().stdout("[Uu]sage:? ?./morse[^\n]*", str_output="Usage: ./morse <code>")
+        run_check().stdout("([Uu]sage:? )?./morse[^\n]*", str_output="Usage: ./morse <code>")
         
         run_check("...---...").stdout("SOS")
 
