@@ -6,6 +6,8 @@ import os
 import sys
 import glob
 
+from collections import Counter
+
 @check50.check()
 def spam():
     """spam werkt precies zoals de voorbeelden in de opdracht"""
