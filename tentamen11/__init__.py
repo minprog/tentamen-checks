@@ -12,7 +12,8 @@ def spam():
     with logged_check_factory("spam") as run_check:
 
         test_string = "Ca$hh M0n3y"
-        output = (run_check(test_string)
+        output = (run_check()
+            .stdin(test_string)
             .stdout("30(?!\d)", str_output="30")
             .stdout())
 
@@ -20,15 +21,13 @@ def spam():
             raise check50.Failure(f"{test_string} should be spam")
 
         test_string = "Deze email is normaal."
-        output = (run_check(test_string)
+        output = (run_check()
+            .stdin(test_string)
             .stdout("5(?!\d)", str_output="5")
             .stdout())
 
         if "spam" in output or "normaal" not in output:
             raise check50.Failure(f"{test_string} should not be spam")
-
-        (run_check()
-            .stdout("(Usage: )?./spam text..."))
 
 @check50.check()
 def regen():
@@ -59,9 +58,9 @@ def regen():
             .stdout("[Gg]emiddeld 11(?!\d)", str_output="Gemiddeld 11 millimeter"))
 
 @check50.check()
-def trapezium():
-    """trapezium werkt precies zoals de voorbeelden in de opdracht"""
-    command = make_runnable("trapezium")
+def gelijkbenig():
+    """gelijkbenig werkt precies zoals de voorbeelden in de opdracht"""
+    command = make_runnable("gelijkbenig")
 
     # check example 1
     check = check50.run(command).stdin("5")
