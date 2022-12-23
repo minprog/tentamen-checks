@@ -129,12 +129,12 @@ def dobbelsteen():
         # check length 0 input
         run = run_check()
         run = run.stdin("100")
-        run.stdout("Je hebt niet gegooid\.?", "Je hebt niet gegooid.")
+        run.stdout("niet gegooid\.?", "Je hebt niet gegooid.")
 
         # check length 0 input
         run = run_check()
         run = run.stdin("0")
-        run.stdout("Je hebt niet gegooid\.?", "Je hebt niet gegooid.")
+        run.stdout("niet gegooid\.?", "Je hebt niet gegooid.")
 
 @check50.check()
 def absoluut():
