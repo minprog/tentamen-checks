@@ -45,7 +45,7 @@ def spam():
             .stdout())
 
         if "spam" in output or "normaal" not in output:
-            raise check50.Failure(f"{test_string} shoud not be spam")
+            raise check50.Failure(f"{test_string} should not be spam")
 
         (run_check()
             .stdout("(Usage: )?./spam text..."))
