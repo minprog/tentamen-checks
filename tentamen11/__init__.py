@@ -148,7 +148,7 @@ def absoluut():
             .stdout("0"))
 
         (run_check()
-            .stdout("(Usage: )?./absoluut num..."))
+            .stdout("(Usage: )?./abs"))
 
 
 
