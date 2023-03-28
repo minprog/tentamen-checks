@@ -165,7 +165,7 @@ def logged_check_factory(*names):
     try:
         yield create_check
     finally:
-        check50.data(output=stream.text)
+        check50.data(output=(stream.text+"\n\n"))
 
 
 def make_runnable(*names):
