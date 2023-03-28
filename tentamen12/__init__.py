@@ -41,48 +41,48 @@ def spraaksynthese():
     """spraaksynthese is correct"""
     with logged_check_factory("spraaksynthese", "synthese") as run_check:
 
-    # check example 1
-    (run_check("123")
-        .stdout("een,\s?twee,\s?drie\n"))
+        # check example 1
+        (run_check("123")
+            .stdout("een,\s?twee,\s?drie\n"))
 
-    # check example 2
-    (run_check("4210")
-        .stdout("vier,\s?twee,\s?een,\s?nul\n"))
+        # check example 2
+        (run_check("4210")
+            .stdout("vier,\s?twee,\s?een,\s?nul\n"))
 
-    # check example 3
-    (run_check()
-        .stdout("Usage"))
+        # check example 3
+        (run_check()
+            .stdout("Usage"))
 
 @check50.check()
 def mario51():
     """mario51 werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("mario51") as run_check:
 
-    # check example 1
-    check = run_check("5", "4")
-    answer = (
-        "#####(\s)*\n"
-        "#(\s)*\n"
-        "#(\s)*\n"
-        "#(\s)*\n"
-    )
-    check.stdout(answer)
+        # check example 1
+        check = run_check("5", "4")
+        answer = (
+            "#####(\s)*\n"
+            "#(\s)*\n"
+            "#(\s)*\n"
+            "#(\s)*\n"
+        )
+        check.stdout(answer)
 
-    # check example 2
-    check = run_check("2", "2")
-    answer = (
-        "##(\s)*\n"
-        "#(\s)*\n"
-    )
-    check.stdout(answer)
+        # check example 2
+        check = run_check("2", "2")
+        answer = (
+            "##(\s)*\n"
+            "#(\s)*\n"
+        )
+        check.stdout(answer)
 
-    # check example 3
-    check = run_check("1", "2")
-    check.stdout("Dat kan niet")
+        # check example 3
+        check = run_check("1", "2")
+        check.stdout("Dat kan niet")
 
-    # check example 4
-    check = run_check("1")
-    check.stdout("Dat kan niet")
+        # check example 4
+        check = run_check("1")
+        check.stdout("Dat kan niet")
 
 @check50.check()
 def klinkers():
@@ -104,7 +104,7 @@ def klinkers():
             .stdout("awesome"))
 
 @check50.check()
-def getal_raden():
+def raden():
     """getal raden is correct"""
     with logged_check_factory("raden") as run_check:
 
