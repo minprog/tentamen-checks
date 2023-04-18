@@ -90,7 +90,7 @@ def pijl():
         check.stdout(answer5)
 
         check = run_check("7")
-        check.stdout(answer5)
+        check.stdout(answer7)
 
         check = run_check("2")
         check.stdout("Dat kan niet")
