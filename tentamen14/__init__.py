@@ -37,9 +37,9 @@ def header():
                 .stdin("02/10/2023")
                 .stdin("Prints hello world")
                 .stdout("/\*{60,}")
-                .stdout("\* Author: Jelle van Assema {30,}\*")
-                .stdout("\* Date: 02/10/2023 {30,}\*")
-                .stdout("\* Description: Prints hello world {30,}\*")
+                .stdout("\* ?Author: Jelle van Assema {30,}\*")
+                .stdout("\* ?Date: 02/10/2023 {30,}\*")
+                .stdout("\* ?Description: Prints hello world {30,}\*")
                 .stdout("\*{60,}/"))
 
             (run_check()
@@ -53,9 +53,9 @@ def header():
                 .stdin("Ook deze beschrijving is meer dan zestig karakters lang waardoor het niet zou passe")
                 .stdin("Prints a pyramid for mario")
                 .stdout("/\*{60,}")
-                .stdout("\* Author: Martijn Reus {30,}\*")
-                .stdout("\* Date: 02-10-2023 {30,}\*")
-                .stdout("\* Description: Prints a pyramid for mario {30,}\*")
+                .stdout("\* ?Author: Martijn Reus {30,}\*")
+                .stdout("\* ?Date: 02-10-2023 {30,}\*")
+                .stdout("\* ?Description: Prints a pyramid for mario {30,}\*")
                 .stdout("\*{60,}/"))
 
 
