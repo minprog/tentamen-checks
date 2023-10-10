@@ -4,46 +4,27 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
 
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def klinkers():
+    """klinkers werkt precies zoals de voorbeelden in de opdracht"""
+    with logged_check_factory("klinkers") as run_check:
+        (run_check()
+            .stdin("Equal")
+            .stdin("renal")
+            .stdout("equal"))
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
+        (run_check()
+            .stdin("aye")
+            .stdin("abide")
+            .stdout("aye\nabide"))
 
-        # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+        (run_check()
+            .stdin("retina")
+            .stdin("AwesOmE")
+            .stdout("awesome"))
 
 
 class Stream:

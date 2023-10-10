@@ -4,46 +4,29 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
 
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def formule():
+    """formule werkt precies zoals de voorbeelden in de opdracht"""
+    with logged_check_factory("formule") as run_check:
+        
+        (run_check()
+            .stdin("hello world!")
+            .stdout("geen fouten", str_output="Er zijn geen fouten."))
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
+        (run_check()
+            .stdin("(a + b - (c * d))")
+            .stdout("geen fouten", str_output="Er zijn geen fouten."))
 
-        # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+        (run_check()
+            .stdin(")a + b(")
+            .stdout("te vroeg", str_output="Er wordt een haakje te vroeg gesloten."))
+
+        (run_check()
+            .stdin("a + (c * d")
+            .stdout("te weinig", str_output="Er worden te weinig haakjes gesloten."))
 
 
 class Stream:

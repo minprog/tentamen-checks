@@ -4,47 +4,37 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
 
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def alfabet():
+    """alfabet is correct"""
+    with logged_check_factory("alfabet") as create_check:
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
+        # check example 1
+        (create_check()
+            .stdin("Taylor")
+            .stdin("Lana")
+            .stdout("Lana first"))
 
         # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+        (create_check()
+            .stdin("shark")
+            .stdin("sWoRd")
+            .stdout("shark first"))
 
+        # check example 3
+        (create_check()
+            .stdin("Daantje")
+            .stdin("Daan")
+            .stdout("Daan first"))
+
+        # check example 4
+        (create_check()
+            .stdin("amanda")
+            .stdin("Amanda")
+            .stdout("No need to decide"))
 
 class Stream:
     """Stream-like object that stores everything it receives"""

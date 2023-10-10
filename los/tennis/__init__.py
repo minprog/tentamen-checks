@@ -4,46 +4,24 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
-
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def tennis():
+    """tennis werkt precies zoals de voorbeelden in de opdracht"""
+    with logged_check_factory("tennis") as run_check:
+        (run_check("tennis")
+            .stdin("hello")
+            .stdin("world")
+            .stdout("1 wint", str_output="Speler 1 wint!"))
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
-
-        # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+        (run_check("tennis")
+            .stdin("dat")
+            .stdin("tentamen")
+            .stdin("nooit")
+            .stdin("top")
+            .stdin("wijk")
+            .stdout("2 wint", str_output="Speler 2 wint!"))
 
 
 class Stream:

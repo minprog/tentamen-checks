@@ -4,46 +4,34 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
-
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def wachtwoord():
+    """wachtwoord werkt precies zoals de voorbeelden in de opdracht"""
+    with logged_check_factory("wachtwoord") as run_check:
+        (run_check()
+            .stdin("geheim")
+            .stdout("Niet sterk genoeg!")
+            .stdin("aardbei121")
+            .stdout("Niet sterk genoeg!")
+            .stdin("roomboter")
+            .stdout("Niet sterk genoeg!")
+            .stdin("kruipluik291")
+            .stdout("Sterk genoeg!")
+            .exit(0))
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
+        (run_check()
+            .stdin("geheim")
+            .stdout("Niet sterk genoeg!")
+            .stdin("kruipluik")
+            .stdout("Sterk genoeg!")
+            .exit(0))
 
-        # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+        (run_check()
+            .stdin("mamamama")
+            .stdout("Sterk genoeg!")
+            .exit(0))
 
 
 class Stream:

@@ -65,15 +65,15 @@ def logged_check_factory(*names):
     command = make_runnable(*names)
     stream = Stream()
 
-    def create_check():
-        check = check50.run(command)
+    def create_check(*args):
+        check = check50.run(" ".join([command] + list(args)))
         check.process.logfile = stream
         return check
 
     try:
         yield create_check
     finally:
-        check50.data(output=stream.text)
+        check50.data(output=(stream.text+"\n\n"))
 
 
 def make_runnable(*names):
@@ -89,10 +89,12 @@ def make_runnable(*names):
         if os.path.exists(f"{name}.py"):
             return f"{sys.executable} {name}.py"
 
-        files = glob.glob("*.c")
-        if len(files) > 0:
-            os.rename(files[0], f"{name}.c")
-            check50.c.compile(f"{name}.c", "-lcs50")
+        files = {n.lower():n for n in glob.glob("*.c")}
+        real_name = f"{name}.c"
+        submitted_name = files.get(real_name, False)
+        if submitted_name != False:
+            os.rename(submitted_name, real_name)
+            check50.c.compile(real_name, "-lcs50")
             return f"./{name}"
 
     raise check50.Failure(f"{' en/of '.join(names)} {'is' if len(names) == 1 else 'zijn'} niet aanwezig")

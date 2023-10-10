@@ -4,46 +4,60 @@ import check50.internal
 import contextlib
 import os
 import sys
-import re
 import glob
 
-
 @check50.check()
-def driehoek():
-    """driehoek.c is waarschijnlijk correct"""
-    with logged_check_factory("driehoek") as run_driehoek:
+def trapezium():
+    """trapezium is correct"""
+    command = make_runnable("trapezium")
 
-        answer = (
-    "    ##(\s)*\n"
-    "   #  #(\s)*\n"
-    "  #    #(\s)*\n"
-    " #      #(\s)*\n"
-    "##########(\s)*\n")
-        run_driehoek().stdin("5").stdout(answer)
+    # check example 1
+    check = check50.run(command).stdin("5")
+    answer = (
+        "    ##########(\s)*\n"
+        "   #        #(\s)*\n"
+        "  #        #(\s)*\n"
+        " #        #(\s)*\n"
+        "##########(\s)*"
+    )
+    check.stdout(answer)
 
-        # check example 2
-        answer = (
-    "                   ##(\s)*\n"
-    "                  #  #(\s)*\n"
-    "                 #    #(\s)*\n"
-    "                #      #(\s)*\n"
-    "               #        #(\s)*\n"
-    "              #          #(\s)*\n"
-    "             #            #(\s)*\n"
-    "            #              #(\s)*\n"
-    "           #                #(\s)*\n"
-    "          #                  #(\s)*\n"
-    "         #                    #(\s)*\n"
-    "        #                      #(\s)*\n"
-    "       #                        #(\s)*\n"
-    "      #                          #(\s)*\n"
-    "     #                            #(\s)*\n"
-    "    #                              #(\s)*\n"
-    "   #                                #(\s)*\n"
-    "  #                                  #(\s)*\n"
-    " #                                    #(\s)*\n"
-    "########################################(\s)*\n")
-        run_driehoek().stdin("20").stdout(answer)
+    # check example 2
+    check = check50.run(command).stdin("15")
+    answer = (
+        "              ##############################(\s)*\n"
+        "             #                            #(\s)*\n"
+        "            #                            #(\s)*\n"
+        "           #                            #(\s)*\n"
+        "          #                            #(\s)*\n"
+        "         #                            #(\s)*\n"
+        "        #                            #(\s)*\n"
+        "       #                            #(\s)*\n"
+        "      #                            #(\s)*\n"
+        "     #                            #(\s)*\n"
+        "    #                            #(\s)*\n"
+        "   #                            #(\s)*\n"
+        "  #                            #(\s)*\n"
+        " #                            #(\s)*\n"
+        "##############################(\s)*"
+    )
+    check.stdout(answer)
+
+    # check example 3
+    check = (check50.run(command)
+        .stdin("-3")
+        .stdin("40")
+        .stdin("3")
+        .stdin("5"))
+    answer = (
+        "    ##########(\s)*\n"
+        "   #        #(\s)*\n"
+        "  #        #(\s)*\n"
+        " #        #(\s)*\n"
+        "##########(\s)*"
+    )
+    check.stdout(answer)
+
 
 
 class Stream:
