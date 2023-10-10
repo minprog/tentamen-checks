@@ -10,8 +10,8 @@ import glob
 
 @check50.check()
 def hoofdletters():
-    """teller is waarschijnlijk correct"""
-    with logged_check_factory("teller") as run_teller:
+    """hoofdletters is waarschijnlijk correct"""
+    with logged_check_factory("hoofdletters") as run_teller:
 
         # check example 1
         (run_teller()
