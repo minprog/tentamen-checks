@@ -36,11 +36,11 @@ def header():
                 .stdin("Jelle van Assema")
                 .stdin("02/10/2023")
                 .stdin("Prints hello world")
-                .stdout("/\*{50,}")
+                .stdout("/[\*#]{50,}")
                 .stdout("\* ?Author: Jelle van Assema {30,}\*")
                 .stdout("\* ?Date: 02/10/2023 {30,}\*")
                 .stdout("\* ?D[ei]scription: Prints hello world {20,}\*")
-                .stdout("\*{50,}/"))
+                .stdout("[#\*]{50,}/?"))
 
             (run_check()
                 .stdin("Dit is een veel te lange naam van meer dan zestig karakters waardoor het niet zou passen")
@@ -52,11 +52,11 @@ def header():
                 .stdin("02-10-2023")
                 .stdin("Ook deze beschrijving is meer dan zestig karakters lang waardoor het niet zou passe")
                 .stdin("Prints a pyramid for mario")
-                .stdout("/\*{50,}")
+                .stdout("/[\*#]{50,}")
                 .stdout("\* ?Author: Martijn Reus {30,}\*")
                 .stdout("\* ?Date: 02-10-2023 {30,}\*")
                 .stdout("\* ?D[ei]scription: Prints a pyramid for mario {20,}\*")
-                .stdout("\*{50,}/"))
+                .stdout("[\*#]{50,}/?"))
 
 
 @check50.check()
