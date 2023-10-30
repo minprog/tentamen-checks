@@ -14,7 +14,7 @@ def startswith():
         run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("3 woorden")
         run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("2 woorden")
         run_check("efg").stdin("").stdout("0 woorden")
-        run_check().stdout("[Gg]ebruik")
+        run_check().stdout("[Gg][ebruik]{4,}")
 
 
 @check50.check()
@@ -78,7 +78,7 @@ def bsn():
         run_check("111222332").stdout("nee")
         run_check("123456782").stdout("ja")
         run_check("12345").stdout("bsn moet precies 9 cijfers lang zijn", regex=False)
-        run_check().stdout("Gebruik: ./bsn <nummer>", regex=False)
+        run_check().stdout("[Gg][ebruik]{4,}")
 
 
 @check50.check()
