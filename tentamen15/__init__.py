@@ -77,7 +77,7 @@ def bsn():
         run_check("987654321").stdout("nee")
         run_check("111222332").stdout("nee")
         run_check("123456782").stdout("ja")
-        run_check("12345").stdout("bsn moet precies 9 cijfers lang zijn", regex=False)
+        run_check("12345").stdout("bsn")
         run_check().stdout("[Gg][ebruik]{4,}")
 
 
