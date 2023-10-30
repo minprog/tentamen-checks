@@ -11,9 +11,9 @@ import glob
 def startswith():
     """startswith werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("startswith") as run_check:
-        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdout("alfa\nbravo\ndelta\n")
+        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("alfa\nbravo\ndelta\n")
         
-        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdout("alleen\neen\n")
+        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("alleen\neen\n")
         
         out = run_check("efg").stdout()
         if out != "":
@@ -129,8 +129,8 @@ def calculator():
             .stdin("+")
             .stdin("0")
             .stdout("= -4", regex=False)
-            .stdin("^")
-            .stdin("3")
+            .stdin("-")
+            .stdin("60")
             .stdout("= -64", regex=False)
             .stdin("+")
             .stdin("62")
