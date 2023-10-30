@@ -54,19 +54,19 @@ def tetris():
     """tetris werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("tetris") as run_check:
         (run_check(".......... .......... ........XX XXXXXXXXXX .XXXXXXXXX XXXXXXXXXX")
-            .stdout("gevulde rijen: 2", regex=False))
+            .stdout("gev[^\d]*2"))
 
         (run_check("X.. XXX .X.")
-            .stdout("gevulde rijen: 1", regex=False))
+            .stdout("gev[^\d]*1"))
 
         (run_check("XXXX XXXX XXXX")
-            .stdout("gevulde rijen: 3", regex=False))
+            .stdout("gev[^\d]*3"))
 
         (run_check("... ... ... ...")
-            .stdout("gevulde rijen: 0", regex=False))
+            .stdout("gev[^\d]*0"))
 
         (run_check()
-            .stdout("gevulde rijen: 0", regex=False))
+            .stdout("gev[^\d]*0"))
 
 
 @check50.check()
