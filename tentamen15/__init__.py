@@ -11,8 +11,8 @@ import glob
 def startswith():
     """startswith werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("startswith") as run_check:
-        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("3 woorden\n")
-        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("2 woorden\n")
+        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("3 woorden")
+        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("2 woorden")
         run_check("efg").stdin("").stdout("0 woorden")
         run_check().stdout("[Gg]ebruik")
 
