@@ -14,7 +14,7 @@ def startswith():
         run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("3 woorden\n")
         run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("2 woorden\n")
         run_check("efg").stdin("").stdout("0 woorden")
-        run_check().stdout("gebruik")
+        run_check().stdout("[Gg]ebruik")
 
 
 @check50.check()
