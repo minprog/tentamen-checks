@@ -11,14 +11,9 @@ import glob
 def startswith():
     """startswith werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("startswith") as run_check:
-        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("alfa\nbravo\ndelta\n")
-        
-        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("alleen\neen\n")
-        
-        out = run_check("efg").stdout()
-        if out != "":
-            raise check50.Failure(f"expected ./startswith efg to produce no output, but got: {out}")
-
+        run_check("abd").stdin("alfa").stdin("bravo").stdin("charlie").stdin("delta").stdin("echo").stdin("").stdout("3 woorden\n")
+        run_check("aeiouy").stdin("alleen").stdin("woorden").stdin("die").stdin("beginnen").stdin("met").stdin("een").stdin("klinker").stdin("").stdout("2 woorden\n")
+        run_check("efg").stdin("").stdout("0 woorden")
         run_check().stdout("gebruik")
 
 
@@ -60,16 +55,16 @@ def tetris():
     with logged_check_factory("tetris") as run_check:
         (run_check(".......... .......... ........XX XXXXXXXXXX .XXXXXXXXX XXXXXXXXXX")
             .stdout("gevulde rijen: 2", regex=False))
-        
+
         (run_check("X.. XXX .X.")
             .stdout("gevulde rijen: 1", regex=False))
-        
+
         (run_check("XXXX XXXX XXXX")
             .stdout("gevulde rijen: 3", regex=False))
-        
+
         (run_check("... ... ... ...")
             .stdout("gevulde rijen: 0", regex=False))
-        
+
         (run_check()
             .stdout("gevulde rijen: 0", regex=False))
 
@@ -77,7 +72,7 @@ def tetris():
 @check50.check()
 def bsn():
     """bsn werkt precies zoals de voorbeelden in de opdracht"""
-    with logged_check_factory("bsn") as run_check:        
+    with logged_check_factory("bsn") as run_check:
         run_check("111222333").stdout("ja")
         run_check("987654321").stdout("nee")
         run_check("111222332").stdout("nee")
@@ -108,7 +103,7 @@ def calculator():
             .stdin("-3")
             .stdout("= -96", regex=False)
             .stdin("S"))
-        
+
         (run_check()
             .stdin("4")
             .stdin("*")
@@ -123,7 +118,7 @@ def calculator():
             .stdin("2")
             .stdout("= 7", regex=False)
             .stdin("S"))
-        
+
         (run_check()
             .stdin("-4")
             .stdin("+")
