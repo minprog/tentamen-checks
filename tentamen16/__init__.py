@@ -36,8 +36,8 @@ def uitschrijven():
     """uitschrijven werkt precies zoals de voorbeelden in de opdracht"""
     with logged_check_factory("uitschrijven") as run_check:
         (run_check()
-            .stdout("3 7 5 een\n")
-            .stdout("drie 7 vijf een\n")
+            .stdout("3 7 5 een ?\n")
+            .stdout("drie 7 vijf een ?\n")
             .stdout("tres 7 5 uno"))
 
 
