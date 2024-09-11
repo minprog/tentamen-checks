@@ -9,6 +9,8 @@ helpers = check50.internal.import_file(
 @check50.check()
 def makelaar():
     """makelaar werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("makelaar.c")
+
     main = r"""
 int main(void)
 {
@@ -32,6 +34,8 @@ int main(void)
 @check50.check()
 def header():
     """header werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("header.c")
+
     main = r"""
 int main(void)
 {
@@ -60,6 +64,8 @@ int main(void)
 @check50.check()
 def collatz():
     """collatz werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("collatz.c")
+
     main = r"""
 int main(void)
 {
@@ -69,7 +75,6 @@ int main(void)
     collatz(10);
 }
 """
-
     with helpers.replace_main("collatz.c", main):
         with helpers.logged_check_factory("collatz") as run_check:
 
@@ -87,66 +92,98 @@ int main(void)
                 .stdout("[S|s]tap 7: 1",  str_output="Stap 7: 1"))
 
 
-# @check50.check()
-# def leestijd():
-#     """leestijd werkt precies zoals de voorbeelden in de opdracht"""
-#     with logged_check_factory("leestijd") as run_check:
+@check50.check()
+def spam():
+    """spam werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("spam.c")
 
-#         # check example 1
-#         (run_check()
-#             .stdin("35")
-#             .stdin("50")
-#             .stdin("10")
-#             .stdin("15")
-#             .stdin("-1")
-#             .stdout("[Jj]e hebt ongeveer 9[12][\n]* pagina", "Je hebt ongeveer 91/92 pagina's gelezen."))
+    main = r"""
+int main(void)
+{
+    string subject1 = "CaZhh M0n3y";
+    printf("-> \"%s\"\n", subject1);
+    spam_check(subject1);
 
-#         # check example 2
-#         (run_check()
-#             .stdin("-1")
-#             .stdout("[Jj]e hebt niet gelezen\.?"))
+    string subject2 = "Dit was zeker geen spam!";
+    printf("\n-> \"%s\"\n", subject2);
+    spam_check(subject2);
 
+    string subject3 = "";
+    printf("\n-> \"%s\"\n", subject3);
+    spam_check(subject3);
+}
+"""
+    with helpers.replace_main("spam.c", main):
+        with helpers.logged_check_factory("spam") as run_check:
 
-# @check50.check()
-# def spam():
-#     """spam werkt precies zoals de voorbeelden in de opdracht"""
-#     with logged_check_factory("spam") as run_check:
-
-#         test_string = "CaZhh M0n3y"
-#         output = (run_check(test_string)
-#             .stdout("20(?!\d)", str_output="20")
-#             .stdout())
-
-#         if "spam" not in output or "normaal" in output:
-#             raise check50.Failure(f"{test_string} should be spam")
-
-#         test_string = "Dit was zeker geen spam!"
-#         output = (run_check(test_string)
-#             .stdout("5(?!\d)", str_output="5")
-#             .stdout())
-
-#         if "spam" in output or "normaal" not in output:
-#             raise check50.Failure(f"{test_string} should not be spam")
-
-#         (run_check()
-#             .stdout("(Usage: )?./spam text..."))
+            (run_check()
+                .stdout('-> "CaZhh M0n3y"', regex=False)
+                .stdout("Er zijn 20 procent niet-alfabetische karakters.", regex=False)
+                .stdout("Deze mail is spam.", regex=False)
+                .stdout('-> "Dit was zeker geen spam!"', regex=False)
+                .stdout("Er zijn 5 procent niet-alfabetische karakters.", regex=False)
+                .stdout("Deze mail is normaal.", regex=False)
+                .stdout('-> ""', regex=False)
+                .stdout("Deze mail heeft geen subject.", regex=False))
 
 
-# @check50.check()
-# def afgebroken():
-#     """afgebroken werkt precies zoals de voorbeelden in de opdracht"""
-#     with logged_check_factory("afgebroken") as run_check:
+@check50.check()
+def afgebroken():
+    """afgebroken werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("afgebroken.c")
 
-#         (run_check()
-#             .stdin("Nederlanders worden steeds ouder, vooral door- dat ze na hun 65ste langer in leven blijven.")
-#             .stdout("Nederlanders worden steeds ouder, vooral doordat ze na hun 65ste langer in leven blijven."))
+    main = r"""
+int main(void)
+{
+    string tekst = "Nederlanders worden steeds ouder, vooral door- dat ze na hun 65ste ...";
+    printf("Origineel: %s\n", tekst);
+    afgebroken(tekst);
 
-#         (run_check()
-#             .stdin("Over de identiteit van de schutter zegt de po- litie: 'Als het de man is die we denken dat het is, dan is het een bekende van de politie.'")
-#             .stdout("Over de identiteit van de schutter zegt de politie: 'Als het de man is die we denken dat het is, dan is het een bekende van de politie.'"))
+    tekst = "Over de identiteit van de schutter zegt de po- litie: 'Als het de ...";
+    printf("Origineel: %s\n", tekst);
+    afgebroken(tekst);
 
-#         (run_check()
-#             .stdin("")
-#             .stdin("Een 36-jarige Geldropse heeft deze week een in- breker in haar schuurtje net zo lang achtervolgd tot de politie arriveerde.")
-#             .stdout("Een 36-jarige Geldropse heeft deze week een inbreker in haar schuurtje net zo lang achtervolgd tot de politie arriveerde."))
+    tekst = "Een 36-jarige Geldropse heeft deze week een in- breker in haar ...";
+    printf("Origineel: %s\n", tekst);
+    afgebroken(tekst);
+}
+"""
+    with helpers.replace_main("afgebroken.c", main):
+        with helpers.logged_check_factory("afgebroken") as run_check:
+            (run_check()
+                .stdout("Origineel: Nederlanders worden steeds ouder, vooral door- dat ze na hun 65ste ...", regex=False)
+                .stdout("Nederlanders worden steeds ouder, vooral doordat ze na hun 65ste langer in ...", regex=False)
+                .stdout("Origineel: Over de identiteit van de schutter zegt de po- litie: 'Als het de ...", regex=False)
+                .stdout("Over de identiteit van de schutter zegt de politie: 'Als het de man is die ...", regex=False)
+                .stdout("Origineel: Een 36-jarige Geldropse heeft deze week een in- breker in haar ...", regex=False)
+                .stdout("Een 36-jarige Geldropse heeft deze week een inbreker in haar schuurtje net ...", regex=False))
+                        
 
+@check50.check()
+def leestijd():
+    """leestijd werkt precies zoals de voorbeelden in de opdracht"""
+    check50.exists("leestijd.c")
+
+    main = r"""
+int main(void)
+{
+    // zet de leestijden klaar in een array
+    int tijden1[] = { 35, 50, 10, 15 };
+    // roep de functie aan, met de array en ook de lengte van de array
+    printf("{ 35, 50, 10, 15 }\n");
+    leestijd(tijden1, 4);
+
+    // zet de leestijden klaar in een array
+    int tijden2[] = { };
+    // roep de functie aan, met de array en ook de lengte van de array
+    printf("{ }\n");
+    leestijd(tijden2, 0);
+}
+"""
+    with helpers.replace_main("leestijd.c", main):
+        with helpers.logged_check_factory("leestijd") as run_check:
+            (run_check()
+                .stdout("{ 35, 50, 10, 15 }", regex=False)
+                .stdout("Je hebt ongeveer 92 pagina's gelezen.", regex=False)
+                .stdout("{ }", regex=False)
+                .stdout("Je hebt niet gelezen.", regex=False))
