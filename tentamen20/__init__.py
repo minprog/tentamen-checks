@@ -6,6 +6,8 @@ helpers = check50.internal.import_file(
     "helpers",
     check50.internal.check_dir / "../helpers/helpers.py"
 )
+helpers.set_stdout_limit(10000)
+
 
 @check50.check()
 def raster():
