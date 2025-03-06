@@ -10,71 +10,8 @@ helpers.set_stdout_limit(10000)
 
 
 @check50.check()
-def raster():
-    """raster werkt precies zoals de voorbeelden in de opdracht"""
-    main = r"""
-int main(void)
-{
-    print_raster("abc", "de", "fghi");
-    print_raster("a", "b", "c");
-    print_raster("minor", "programmeren", "tentamen");
-}
-"""
-    with helpers.replace_main("raster.c", main):
-        with helpers.logged_check_factory("raster") as run_check:
-            (run_check()
-                .stdout('---------', regex=False)
-                .stdout('|a|b|c| |', regex=False)
-                .stdout('|d|e| | |', regex=False)
-                .stdout('|f|g|h|i|', regex=False)
-                .stdout('---------', regex=False)
-                .stdout('---', regex=False)
-                .stdout('|a|', regex=False)
-                .stdout('|b|', regex=False)
-                .stdout('|c|', regex=False)
-                .stdout('---', regex=False)
-                .stdout('-------------------------', regex=False)
-                .stdout('|m|i|n|o|r| | | | | | | |', regex=False)
-                .stdout('|p|r|o|g|r|a|m|m|e|r|e|n|', regex=False)
-                .stdout('|t|e|n|t|a|m|e|n| | | | |', regex=False)
-                .stdout('-------------------------', regex=False)
-            )
-
-
-@check50.check()
-def athletics():
-    """athletics werkt zoals de voorbeelden in de opdracht"""
-    main = r"""
-int main(void)
-{
-    int distances1[] = {0, 90, 170, 250, 325, 400};
-    print_stats(distances1, 6);
-    
-    int distances2[] = {0, 70, 140, 210, 270, 330, 390, 50, 100, 150, 200};
-    print_stats(distances2, 11);
-    
-    int distances3[] = {
-        0, 65, 125, 190, 250, 310, 370, 30, 90,
-        150, 210, 270, 330, 380, 40, 100, 150, 200
-    };
-    print_stats(distances3, 18);
-}
-"""
-    with helpers.replace_main("athletics.c", main):
-        with helpers.logged_check_factory("athletics") as run_check:
-            (run_check()
-                .stdout('Top speed: 32.40 km/h', regex=False)
-                .stdout('Total distance: 400.00 m', regex=False)
-                .stdout('Top speed: 25.20 km/h', regex=False)
-                .stdout('Total distance: 600.00 m', regex=False)
-                .stdout('Top speed: 23.40 km/h', regex=False)
-                .stdout('Total distance: 1000.00 m', regex=False)
-            )
-
-
-@check50.check()
 def difference():
-    """difference werkt precies zoals de voorbeelden in de opdracht"""
+    """difference.c werkt precies zoals de voorbeelden in de opdracht"""
     main = r"""
 int main(void)
 {
@@ -107,10 +44,74 @@ int main(void)
                 .stdout('#----#+', regex=False)
             )
 
+@check50.check()
+def raster():
+    """raster.c werkt precies zoals de voorbeelden in de opdracht"""
+    main = r"""
+int main(void)
+{
+    print_raster("abc", "de", "fghi");
+    print_raster("a", "b", "c");
+    print_raster("minor", "programmeren", "tentamen");
+}
+"""
+    with helpers.replace_main("raster.c", main):
+        with helpers.logged_check_factory("raster") as run_check:
+            (run_check()
+                .stdout('---------', regex=False)
+                .stdout('|a|b|c| |', regex=False)
+                .stdout('|d|e| | |', regex=False)
+                .stdout('|f|g|h|i|', regex=False)
+                .stdout('---------', regex=False)
+                .stdout('---', regex=False)
+                .stdout('|a|', regex=False)
+                .stdout('|b|', regex=False)
+                .stdout('|c|', regex=False)
+                .stdout('---', regex=False)
+                .stdout('-------------------------', regex=False)
+                .stdout('|m|i|n|o|r| | | | | | | |', regex=False)
+                .stdout('|p|r|o|g|r|a|m|m|e|r|e|n|', regex=False)
+                .stdout('|t|e|n|t|a|m|e|n| | | | |', regex=False)
+                .stdout('-------------------------', regex=False)
+            )
+
+
+@check50.check()
+def athletics():
+    """athletics.c werkt zoals de voorbeelden in de opdracht"""
+    main = r"""
+int main(void)
+{
+    int distances1[] = {0, 90, 170, 250, 325, 400};
+    print_stats(distances1, 6);
+    
+    int distances2[] = {0, 70, 140, 210, 270, 330, 390, 50, 100, 150, 200};
+    print_stats(distances2, 11);
+    
+    int distances3[] = {
+        0, 65, 125, 190, 250, 310, 370, 30, 90,
+        150, 210, 270, 330, 380, 40, 100, 150, 200
+    };
+    print_stats(distances3, 18);
+}
+"""
+    with helpers.replace_main("athletics.c", main):
+        with helpers.logged_check_factory("athletics") as run_check:
+            (run_check()
+                .stdout('Top speed: 32.40 km/h', regex=False)
+                .stdout('Total distance: 400.00 m', regex=False)
+                .stdout('Top speed: 25.20 km/h', regex=False)
+                .stdout('Total distance: 600.00 m', regex=False)
+                .stdout('Top speed: 23.40 km/h', regex=False)
+                .stdout('Total distance: 1000.00 m', regex=False)
+            )
+
+
+
 
 @check50.check()
 def postal():
-    """postal werkt precies zoals de voorbeelden in de opdracht"""
+    """postal.c werkt precies zoals de voorbeelden in de opdracht"""
     main = r"""
 int main(void)
 {
@@ -139,7 +140,7 @@ int main(void)
 
 @check50.check()
 def bundled():
-    """bundled werkt precies zoals de voorbeelden in de opdracht"""
+    """bundled.c werkt precies zoals de voorbeelden in de opdracht"""
     main = r"""
 int main(void)
 {
