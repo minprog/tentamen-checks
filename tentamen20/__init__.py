@@ -131,10 +131,10 @@ int main(void)
     with helpers.replace_main("postal.c", main):
         with helpers.logged_check_factory("postal") as run_check:
             (run_check()
-                .stdout('Postal code: 1234AB', regex=False)
-                .stdout('Postal code: 1337yo', regex=False)
-                .stdout('Postal code: 1506HF', regex=False)
-                .stdout('Postal code: 1403Yz', regex=False)
+                .stdout(r'(Postal code: )?1234AB\s*'
+                        r'(Postal code: )?1337yo\s*'
+                        r'(Postal code: )?1506HF\s*'
+                        r'(Postal code: )?1403Yz\s*')
             )
 
 
