@@ -98,12 +98,12 @@ int main(void)
     with helpers.replace_main("athletics.c", main):
         with helpers.logged_check_factory("athletics") as run_check:
             (run_check()
-                .stdout('Top speed: 32.40 km/h', regex=False)
-                .stdout('Total distance: 400.00 m', regex=False)
-                .stdout('Top speed: 25.20 km/h', regex=False)
-                .stdout('Total distance: 600.00 m', regex=False)
-                .stdout('Top speed: 23.40 km/h', regex=False)
-                .stdout('Total distance: 1000.00 m', regex=False)
+                .stdout(r'Top speed: 32\.40 km/h', str_output='Top speed: 32.40 km/h')
+                .stdout(r'Total distance: 400\.0+ m', str_output='Total distance: 400.00 m')
+                .stdout(r'Top speed: 25\.20 km/h', str_output='Top speed: 25.20 km/h')
+                .stdout(r'Total distance: 600\.0+ m', str_output='Total distance: 600.00 m')
+                .stdout(r'Top speed: 23\.40 km/h', str_output='Top speed: 23.40 km/h')
+                .stdout(r'Total distance: 1000\.0+ m', str_output='Total distance: 1000.00 m')
             )
 
 
