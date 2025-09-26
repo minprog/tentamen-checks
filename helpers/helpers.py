@@ -2,6 +2,7 @@ import contextlib
 import re
 import string
 import check50
+import check50.c
 import os
 import sys
 import glob
