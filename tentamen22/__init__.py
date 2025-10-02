@@ -34,8 +34,8 @@ int main(void)
             )
 
 @check50.check()
-def board():
-    """board.c werkt precies zoals de voorbeelden in de opdracht"""
+def uithangbord():
+    """uithangbord.c werkt precies zoals de voorbeelden in de opdracht"""
     main = r"""
 int main(void)
 {
@@ -44,8 +44,8 @@ int main(void)
     print_board("Faculteit\nder\nNatuurwetenschappen\nWiskunde\nen\nInformatica\n");
 }
 """
-    with helpers.replace_main("board.c", main):
-        with helpers.logged_check_factory("board") as run_check:
+    with helpers.replace_main("uithangbord.c", main):
+        with helpers.logged_check_factory("uithangbord") as run_check:
             (run_check()
                 .stdout('##########\n', regex=False)
                 .stdout('Margherita\n', regex=False)
@@ -69,8 +69,8 @@ int main(void)
             )
 
 @check50.check()
-def print_hoofdletters():
-    """print_hoofdletters.c werkt zoals de voorbeelden in de opdracht"""
+def hoofdletterzoeker():
+    """hoofdletterzoeker.c werkt zoals de voorbeelden in de opdracht"""
     main = r"""
 int main(void)
 {
@@ -95,8 +95,8 @@ int main(void)
     printf("\n");
 }
 """
-    with helpers.replace_main("print_hoofdletters.c", main):
-        with helpers.logged_check_factory("print_hoofdletters") as run_check:
+    with helpers.replace_main("hoofdletterzoeker.c", main):
+        with helpers.logged_check_factory("hoofdletterzoeker") as run_check:
             (run_check()
                 .stdout('"Hello World" print:\n', regex=False)
                 .stdout('Hello World', regex=False)
