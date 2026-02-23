@@ -152,11 +152,11 @@ int main(void)
         with helpers.logged_check_factory("afgebroken") as run_check:
             (run_check()
                 .stdout("Origineel: Nederlanders worden steeds ouder, vooral door- dat ze na hun 65ste ...", regex=False)
-                .stdout("Nederlanders worden steeds ouder, vooral doordat ze na hun 65ste langer in ...", regex=False)
+                .stdout("Nederlanders worden steeds ouder, vooral doordat ze na hun 65ste ...", regex=False)
                 .stdout("Origineel: Over de identiteit van de schutter zegt de po- litie: 'Als het de ...", regex=False)
-                .stdout("Over de identiteit van de schutter zegt de politie: 'Als het de man is die ...", regex=False)
+                .stdout("Over de identiteit van de schutter zegt de politie: 'Als het de ...", regex=False)
                 .stdout("Origineel: Een 36-jarige Geldropse heeft deze week een in- breker in haar ...", regex=False)
-                .stdout("Een 36-jarige Geldropse heeft deze week een inbreker in haar schuurtje net ...", regex=False))
+                .stdout("Een 36-jarige Geldropse heeft deze week een inbreker in haar ...", regex=False))
                         
 
 @check50.check()
