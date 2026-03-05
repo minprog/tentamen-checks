@@ -90,8 +90,8 @@ int main(void)
     printf("%s\n", tekst3);
 }
 """
-    with helpers.replace_main("filter_tekens.c", main):
-        with helpers.logged_check_factory("filter_tekens") as run_check:
+    with helpers.replace_main("filter.c", main):
+        with helpers.logged_check_factory("filter") as run_check:
             (run_check()
                 .stdout('filter op "hello world" met de karakters "eo" geeft:', regex=False)
                 .stdout('h ll  w rld', regex=False)
