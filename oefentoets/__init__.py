@@ -6,6 +6,8 @@ helpers = check50.internal.import_file(
     check50.internal.check_dir / "../helpers/helpers.py"
 )
 
+helpers.set_stdout_limit(1000)
+
 @check50.check()
 def makelaar():
     """makelaar werkt precies zoals de voorbeelden in de opdracht"""
