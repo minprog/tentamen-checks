@@ -20,40 +20,6 @@ def regel(tekst):
 
 
 @check50.check()
-def kenteken_geldig():
-    """is_geldig_kenteken geeft true of false terug zoals in de opdracht"""
-    main = r"""
-int main(void)
-{
-    printf("%i\n", is_geldig_kenteken("GX-01-BC"));
-    printf("%i\n", is_geldig_kenteken("12-AB-34"));
-    printf("%i\n", is_geldig_kenteken("RT-VD-88"));
-    printf("%i\n", is_geldig_kenteken("40-72-KP"));
-    printf("%i\n", is_geldig_kenteken("AB-CD-EF"));
-    printf("%i\n", is_geldig_kenteken("12-34-56"));
-    printf("%i\n", is_geldig_kenteken("gx-01-bc"));
-    printf("%i\n", is_geldig_kenteken("GX-0B-CD"));
-    printf("%i\n", is_geldig_kenteken("GX-01-B"));
-    printf("%i\n", is_geldig_kenteken("GX0-1-BC"));
-}
-"""
-    with helpers.replace_main("kenteken.c", main):
-        with helpers.logged_check_factory("kenteken") as run_check:
-            (run_check()
-                .stdout(regel('1'), str_output='1')
-                .stdout(regel('1'), str_output='1')
-                .stdout(regel('1'), str_output='1')
-                .stdout(regel('1'), str_output='1')
-                .stdout(regel('0'), str_output='0')
-                .stdout(regel('0'), str_output='0')
-                .stdout(regel('0'), str_output='0')
-                .stdout(regel('0'), str_output='0')
-                .stdout(regel('0'), str_output='0')
-                .stdout(regel('0'), str_output='0')
-            )
-
-
-@check50.check()
 def trap():
     """trap.c werkt precies zoals de voorbeelden in de opdracht"""
     main = r"""
@@ -204,6 +170,39 @@ int main(void)
                 .stdout(regel('0 komt 3 keer voor'), str_output='0 komt 3 keer voor')
                 .stdout(regel('Geen herhalingen'), str_output='Geen herhalingen')
                 .stdout(regel('Geen herhalingen'), str_output='Geen herhalingen')
+            )
+
+@check50.check()
+def kenteken_geldig():
+    """is_geldig_kenteken geeft true of false terug zoals in de opdracht"""
+    main = r"""
+int main(void)
+{
+    printf("%i\n", is_geldig_kenteken("GX-01-BC"));
+    printf("%i\n", is_geldig_kenteken("12-AB-34"));
+    printf("%i\n", is_geldig_kenteken("RT-VD-88"));
+    printf("%i\n", is_geldig_kenteken("40-72-KP"));
+    printf("%i\n", is_geldig_kenteken("AB-CD-EF"));
+    printf("%i\n", is_geldig_kenteken("12-34-56"));
+    printf("%i\n", is_geldig_kenteken("gx-01-bc"));
+    printf("%i\n", is_geldig_kenteken("GX-0B-CD"));
+    printf("%i\n", is_geldig_kenteken("GX-01-B"));
+    printf("%i\n", is_geldig_kenteken("GX0-1-BC"));
+}
+"""
+    with helpers.replace_main("kenteken.c", main):
+        with helpers.logged_check_factory("kenteken") as run_check:
+            (run_check()
+                .stdout(regel('1'), str_output='1')
+                .stdout(regel('1'), str_output='1')
+                .stdout(regel('1'), str_output='1')
+                .stdout(regel('1'), str_output='1')
+                .stdout(regel('0'), str_output='0')
+                .stdout(regel('0'), str_output='0')
+                .stdout(regel('0'), str_output='0')
+                .stdout(regel('0'), str_output='0')
+                .stdout(regel('0'), str_output='0')
+                .stdout(regel('0'), str_output='0')
             )
 
 
